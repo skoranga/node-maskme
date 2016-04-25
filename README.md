@@ -1,2 +1,5 @@
-# node-masker
-nodejs masking module 
+# maskme
+nodejs masking module
+
+### Capabilities
+ - Email Masking (`maskEmail(string)`)
