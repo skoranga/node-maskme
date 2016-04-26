@@ -31,7 +31,7 @@ describe('email mark', function () {
 
     it('email in an object', function () {
         assert(maskme.maskEmail({ a: "b", b: { a: { b: { email: "helloworld@gmail.com"}}}}).b.a.b.email === 'xxx@xxx.xxx');
-        var emails = maskme.maskEmail({ a: "b", emails: ["helloworld@gmail.com", "example.this@yahoo.com", "i_am_encoded%40email.fr", "a@b.c.d"]}).emails;
+        var emails = maskme.maskEmail({ a: "b", emails: ["helloworld@gmail.com", "example.this@yahoo.com", "i_am_encoded%40email.fr", "username@yahoo.co.in"]}).emails;
         emails.forEach(function(email) {
             assert(email === 'xxx@xxx.xxx');
         });
@@ -43,7 +43,7 @@ describe('email mark', function () {
         assert(maskme.maskEmail(allA).indexOf('.com') !== -1);
         allA = array.join('a') + '@gmail.com';
         assert(maskme.maskEmail(allA).indexOf('.com') === -1);
-        allA = array.join('a!@gmail.com');
+        allA = array.join('username@gmail.com');
         assert(maskme.maskEmail(allA).indexOf('@gmail.com') === -1);
         allA = array.join('helloworld@gmail.com ')
         assert(maskme.maskEmail(allA).indexOf('@gmail.com') === -1);
