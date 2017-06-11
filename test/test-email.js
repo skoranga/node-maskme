@@ -37,6 +37,42 @@ describe('email mark', function () {
         });
     });
 
+    it('email in circular object', function () {
+        var obj = { a: "b", c: null, email: "helloworld@gmail.com" };
+        obj.c = obj;
+
+        var masked = maskme.maskEmail(obj);
+        assert.deepEqual(masked, {
+          a: "b",
+          c: "[Circular]",
+          email: "xxx@xxx.xxx"
+        });
+    });
+
+    it('email in circular array', function () {
+        var arr = [ "b", null, "email@email.com" ];
+        arr[1] = arr;
+
+        var masked = maskme.maskEmail(arr);
+        assert.deepEqual(masked, [
+          "b",
+          "[Circular]",
+          "xxx@xxx.xxx"
+        ]);
+    });
+
+    it('email in nested circular object', function () {
+        var hit = { email: "helloworld@gmail.com" };
+        var obj = { a: "b", c: { hit: hit }, d: { e: { hit: hit } } };
+
+        var masked = maskme.maskEmail(obj);
+        assert.deepEqual(masked, {
+          a: "b",
+          c: { hit: { email: "xxx@xxx.xxx" } },
+          d: { e: { hit: "[Circular]" } }
+        });
+    });
+
     it('-ive tests', function () {
         var array = new Array(10240);
         var allA = array.join('a.com ');
