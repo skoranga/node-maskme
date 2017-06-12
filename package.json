@@ -18,10 +18,10 @@
     "test": "mocha"
   },
   "dependencies": {
-    "core-util-is": "^1",
-    "json-stringify-safe": "^5"
+    "core-util-is": "^1"
   },
   "devDependencies": {
+    "benchmark": "^2.1.4",
     "eslint": "^2",
     "mocha": "^2"
   }
