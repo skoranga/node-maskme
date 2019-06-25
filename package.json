@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "benchmark": "^2.1.4",
-    "eslint": "^2",
-    "mocha": "^2"
+    "eslint": "^6",
+    "mocha": "^6"
   }
 }
