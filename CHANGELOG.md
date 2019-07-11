@@ -1,4 +1,5 @@
 ### Unreleased
+ - use Object.getOwnPropertyNames for error objects
  - updating test dependencies
 
 ### 1.0.0
