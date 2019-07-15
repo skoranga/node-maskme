@@ -85,4 +85,16 @@ describe('email mark', function () {
         assert(maskme.maskEmail(allA).indexOf('@gmail.com') === -1);
     });
 
+    it('error', function(){
+        var error = new Error("error");
+        var masked = maskme.maskEmail(error);
+        assert.equal(masked.message, "error");
+    });
+
+    it('error with email', function(){
+        var error = new Error("helloworld@gmail.com");
+        var masked = maskme.maskEmail(error);
+        assert.equal(masked.message, "xxx@xxx.xxx");
+    })
+
 });
